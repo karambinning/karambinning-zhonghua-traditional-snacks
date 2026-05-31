@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Zhonghua Traditional Snacks — 中华传统小吃 · Cambridge</title>
+<meta name="description" content="Traditional Chinese snacks on Norfolk Street, Cambridge. Hand-folded dumplings, hand-pulled noodles, filled buns. Open six days a week, closed Tuesdays.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=ZCOOL+XiaoWei&display=swap">
+<style>
+  :root{
+    --soy:        #18100A;
+    --soy-2:      #221710;
+    --soy-3:      #2C1F16;
+    --cream:      #F2E2C3;
+    --cream-dim:  #C9B595;
+    --marigold:   #E8A33A;
+    --marigold-2: #C9862B;
+    --chilli:     #A6261D;
+    --chilli-2:   #7E1C16;
+    --jade:       #6E8C5A;
+
+    --display: "Caprasimo", "Times New Roman", serif;
+    --body:    "Newsreader", "Georgia", serif;
+    --han:     "ZCOOL XiaoWei", "Songti SC", "STSong", serif;
+
+    --rhythm: clamp(1rem, .7rem + .55vw, 1.18rem);
+    --pad-x:  clamp(1.25rem, 4vw, 4rem);
+  }
+
+  *,*::before,*::after{ box-sizing:border-box }
+  html{ scroll-behavior:smooth }
+  body{
+    margin:0; background:var(--soy); color:var(--cream);
+    font-family:var(--body); font-size:var(--rhythm); line-height:1.55;
+    -webkit-font-smoothing:antialiased; text-wrap:pretty;
+    background-image:
+      radial-gradient(1100px 600px at 8% -10%, rgba(232,163,58,.10), transparent 60%),
+      radial-gradient(900px 500px at 95% 100%, rgba(166,38,29,.10), transparent 65%);
+    background-attachment:fixed;
+  }
+  body::before{
+    /* paper-grain over the soy */
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:1;
+    background-image:
+      radial-gradient(rgba(242,226,195,.06) 1px, transparent 1px),
+      radial-gradient(rgba(242,226,195,.04) 1px, transparent 1px);
+    background-size: 3px 3px, 7px 7px;
+    background-position: 0 0, 2px 2px;
+    mix-blend-mode:overlay;
+    opacity:.55;
+  }
+  img{ max-width:100%; display:block }
+  a{ color:inherit; text-decoration:none }
+  ::selection{ background:var(--marigold); color:var(--soy) }
+
+  h1,h2,h3{
+    font-family:var(--display);
+    font-weight:400; line-height:.96;
+    text-wrap:balance; letter-spacing:-.005em;
+    margin:0;
+  }
+  p{ margin:0 0 1em }
+
+  /* ── TOP BAR ─────────────────────────────────────────────── */
+  .topbar{
+    position:sticky; top:0; z-index:30;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:.75rem var(--pad-x);
+    background: rgba(24,16,10,.75);
+    backdrop-filter: blur(10px) saturate(1.2);
+    -webkit-backdrop-filter: blur(10px) saturate(1.2);
+    border-bottom:1px solid rgba(242,226,195,.10);
+    font-family:var(--body); font-size:.92rem;
+  }
+  .mark{ display:flex; align-items:baseline; gap:.6rem; }
+  .mark .en{ font-family:var(--display); font-size:1.05rem; color:var(--cream); letter-spacing:.005em }
+  .mark .zh{ font-family:var(--han); font-size:1.05rem; color:var(--marigold); opacity:.95 }
+  .topnav{ display:flex; align-items:center; gap:1.4rem; }
+  .topnav a{ font-size:.85rem; letter-spacing:.06em; text-transform:uppercase; color:var(--cream-dim); border-bottom:1px solid transparent; padding-bottom:2px; transition: color .2s, border-color .2s }
+  .topnav a:hover{ color:var(--marigold); border-bottom-color:var(--marigold) }
+  .tel-pill{
+    display:inline-flex; align-items:center; gap:.5rem;
+    padding:.5rem .9rem; border-radius:999px;
+    border:1px solid var(--marigold); color:var(--marigold);
+    font-family:var(--display); font-size:.85rem; letter-spacing:.02em;
+    transition: background .2s, color .2s;
+  }
+  .tel-pill:hover{ background:var(--marigold); color:var(--soy) }
+  .tel-pill .dot{ width:6px; height:6px; border-radius:50%; background:currentColor }
+  @media (max-width: 760px){
+    .topnav a:not(.tel-pill){ display:none }
+  }
+
+  /* ── HERO MASTHEAD ──────────────────────────────────────── */
+  .hero{
+    position:relative; z-index:2;
+    padding: clamp(2.5rem, 5vw, 5rem) var(--pad-x) clamp(2rem, 4vw, 4rem);
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    max-width: 1400px; margin: 0 auto;
+  }
+  @media (min-width: 900px){
+    .hero-grid{ grid-template-columns: 1.4fr .9fr; align-items:end }
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:.7rem;
+    font-family:var(--body); font-size:.86rem; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--cream-dim);
+    margin-bottom: clamp(1.2rem, 2vw, 1.8rem);
+  }
+  .eyebrow::before{
+    content:""; width:2.6rem; height:1px; background:var(--marigold);
+  }
+  .wordmark{
+    font-family:var(--display);
+    font-size: clamp(3.2rem, 11vw, 9.2rem);
+    line-height:.88;
+    letter-spacing:-.012em;
+    color:var(--cream);
+    margin: 0 0 .15em;
+  }
+  .wordmark .amp{ color: var(--marigold); font-style:normal; }
+  .han-stack{
+    font-family:var(--han);
+    font-size: clamp(2.4rem, 9vw, 7rem);
+    line-height:.9;
+    color: var(--marigold);
+    letter-spacing:.05em;
+    margin: 0;
+    /* deliberate bleed-feel: tight to next element */
+  }
+  .han-stack .red{ color: var(--chilli) }
+  .hero-meta{
+    margin-top: clamp(1.4rem, 2.5vw, 2.2rem);
+    font-family:var(--body);
+    font-size: 1.04rem;
+    max-width: 38ch;
+    color: var(--cream);
+  }
+  .hero-meta em{ color: var(--marigold); font-style:italic }
+
+  .hero-card{
+    background: var(--soy-2);
+    border:1px solid rgba(242,226,195,.12);
+    padding: clamp(1.25rem, 2vw, 1.75rem);
+    border-radius: 2px;
+    display:flex; flex-direction:column; gap:1.1rem;
+    position:relative;
+  }
+  .hero-card::before{
+    /* tiny corner mark — like a stamp */
+    content:""; position:absolute; top:-1px; left:-1px;
+    width:18px; height:18px;
+    border-top:2px solid var(--marigold); border-left:2px solid var(--marigold);
+  }
+  .hero-card::after{
+    content:""; position:absolute; bottom:-1px; right:-1px;
+    width:18px; height:18px;
+    border-bottom:2px solid var(--chilli); border-right:2px solid var(--chilli);
+  }
+  .status-line{
+    display:flex; align-items:center; gap:.7rem;
+    font-family:var(--display); font-size:1.1rem; color:var(--cream);
+  }
+  .status-dot{
+    width:.7rem; height:.7rem; border-radius:50%; background:var(--marigold);
+    box-shadow: 0 0 0 4px rgba(232,163,58,.18);
+    animation: pulse 2.6s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{ box-shadow: 0 0 0 4px rgba(232,163,58,.18) }
+    50%   { box-shadow: 0 0 0 7px rgba(232,163,58,.06) }
+  }
+  .card-row{
+    display:flex; justify-content:space-between; gap:1rem;
+    padding-top:.95rem; border-top:1px dashed rgba(242,226,195,.18);
+    font-size:.95rem;
+  }
+  .card-row .lbl{ color:var(--cream-dim); font-family:var(--body); text-transform:uppercase; letter-spacing:.1em; font-size:.78rem }
+  .card-row .val{ font-family:var(--display); color:var(--cream); font-size:1.1rem }
+  .card-row .val a{ color:var(--marigold) }
+  .card-row .val a:hover{ color:var(--cream) }
+  .closed-flag{ color: var(--chilli) }
+
+  /* ── MARQUEE TICKER ─────────────────────────────────────── */
+  .ticker{
+    position:relative; z-index:2;
+    background:var(--marigold);
+    color:var(--soy);
+    padding:.85rem 0;
+    overflow:hidden;
+    border-top:1px solid rgba(24,16,10,.2);
+    border-bottom:1px solid rgba(24,16,10,.2);
+  }
+  .ticker__track{
+    display:inline-flex; gap:3rem; white-space:nowrap;
+    font-family:var(--display); font-size:1.15rem; letter-spacing:.02em;
+    animation: ticker 38s linear infinite;
+  }
+  .ticker__track span{ display:inline-flex; align-items:center; gap:1.4rem }
+  .ticker__track span::after{
+    content:"✦"; color:var(--chilli); font-size:.85rem;
+  }
+  .ticker .zh{ font-family:var(--han); }
+  @keyframes ticker { to { transform: translateX(-50%) } }
+  @media (prefers-reduced-motion: reduce){
+    .ticker__track{ animation:none }
+  }
+
+  /* ── SECTIONS shared ────────────────────────────────────── */
+  section{ position:relative; z-index:2 }
+  .section{
+    padding: clamp(3rem, 6vw, 6rem) var(--pad-x);
+    max-width: 1400px; margin: 0 auto;
+  }
+  .section-head{
+    display:flex; align-items:baseline; justify-content:space-between;
+    gap:2rem; margin-bottom: clamp(2rem, 4vw, 3.2rem);
+    flex-wrap:wrap;
+  }
+  .section-head h2{
+    font-size: clamp(2rem, 5vw, 3.6rem);
+    color: var(--cream);
+  }
+  .section-head .han-tag{
+    font-family:var(--han); color: var(--marigold);
+    font-size: clamp(1.3rem, 3vw, 2rem);
+  }
+  .section-head .kicker{
+    font-family:var(--body); text-transform:uppercase; letter-spacing:.2em;
+    color: var(--cream-dim); font-size:.82rem;
+    margin-bottom:.6rem;
+  }
+
+  /* ── WHAT WE MAKE ───────────────────────────────────────── */
+  .menu-board{
+    background:
+      linear-gradient(180deg, var(--soy-2), var(--soy-3));
+    border:1px solid rgba(242,226,195,.12);
+    padding: clamp(1.5rem, 3vw, 2.6rem);
+    border-radius:2px;
+  }
+  .dishes{
+    display:grid; grid-template-columns:1fr; gap:0;
+  }
+  .dish{
+    display:grid; grid-template-columns: auto 1fr; gap: clamp(1rem, 2vw, 2rem);
+    padding: clamp(1.4rem, 2.5vw, 2.2rem) 0;
+    border-bottom: 1px dashed rgba(242,226,195,.18);
+    align-items:start;
+  }
+  .dish:last-child{ border-bottom:0 }
+  .dish .no{
+    font-family:var(--display); color:var(--marigold);
+    font-size: clamp(1.6rem, 4vw, 2.8rem); line-height:1;
+    min-width:2.4ch;
+  }
+  .dish .head{
+    display:flex; align-items:baseline; gap: 1rem; flex-wrap:wrap;
+    margin-bottom:.4rem;
+  }
+  .dish .en-name{ font-family:var(--display); font-size: clamp(1.4rem, 3vw, 2.1rem); color:var(--cream); line-height:1 }
+  .dish .zh-name{ font-family:var(--han); color:var(--marigold); font-size: clamp(1.1rem, 2.5vw, 1.6rem) }
+  .dish .desc{ color:var(--cream-dim); max-width: 58ch; font-size:1rem; line-height:1.55 }
+
+  /* scroll reveal */
+  @supports (animation-timeline: view()){
+    .reveal{
+      animation: rise both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 25%;
+    }
+    @keyframes rise{
+      from{ opacity:0; transform: translateY(1.6rem) }
+      to  { opacity:1; transform: translateY(0) }
+    }
+  }
+
+  /* ── VISIT ──────────────────────────────────────────────── */
+  .visit-grid{
+    display:grid; grid-template-columns:1fr; gap: clamp(1.5rem, 3vw, 2.4rem);
+  }
+  @media (min-width: 880px){
+    .visit-grid{ grid-template-columns: 1.1fr 1fr }
+  }
+  .visit-card{
+    background: var(--soy-2);
+    border:1px solid rgba(242,226,195,.12);
+    padding: clamp(1.6rem, 3vw, 2.4rem);
+    border-radius:2px;
+  }
+  .visit-card h3{
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    color:var(--cream); margin-bottom:1.2rem;
+  }
+  .addr{ font-family:var(--body); font-size:1.05rem; color:var(--cream); margin-bottom: 1.4rem; line-height:1.5 }
+  .addr .post{ color:var(--cream-dim); letter-spacing:.04em }
+
+  .hours{ list-style:none; padding:0; margin:0 0 1.4rem; }
+  .hours li{
+    display:flex; justify-content:space-between; gap:1rem;
+    padding:.55rem 0;
+    border-bottom: 1px dotted rgba(242,226,195,.15);
+    font-size: .98rem;
+  }
+  .hours li:last-child{ border-bottom:0 }
+  .hours .day{ font-family:var(--display); color:var(--cream); letter-spacing:.01em }
+  .hours .time{ font-family:var(--body); color:var(--cream-dim) }
+  .hours .closed-row .day{ color: var(--chilli) }
+  .hours .closed-row .time{ color: var(--chilli); font-style:italic }
+
+  .contact-list{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.85rem }
+  .contact-list li{ display:flex; gap:1rem; align-items:baseline }
+  .contact-list .k{ font-family:var(--body); text-transform:uppercase; letter-spacing:.14em; font-size:.74rem; color:var(--cream-dim); min-width:7.5rem }
+  .contact-list .v{ font-family:var(--display); font-size:1.05rem; color:var(--cream) }
+  .contact-list a.v:hover{ color:var(--marigold) }
+
+  .fsa{
+    margin-top:1.6rem;
+    display:flex; align-items:center; gap:1rem;
+    padding:1rem 1.1rem;
+    background: var(--soy-3);
+    border-left: 3px solid var(--jade);
+    font-size:.9rem; color:var(--cream-dim); line-height:1.45;
+  }
+  .fsa strong{ color:var(--cream); font-family:var(--display); font-weight:400; letter-spacing:.02em }
+  .fsa .score{
+    font-family:var(--display); color: var(--jade);
+    font-size: 1.55rem; letter-spacing:.02em; line-height:1;
+  }
+
+  /* ── BIG STATEMENT ──────────────────────────────────────── */
+  .statement{
+    padding: clamp(3rem, 7vw, 7rem) var(--pad-x);
+    max-width: 1200px; margin: 0 auto;
+    text-align:left;
+  }
+  .statement p{
+    font-family:var(--display);
+    font-size: clamp(1.8rem, 4.8vw, 4rem);
+    line-height: 1.06;
+    color: var(--cream);
+    letter-spacing:-.012em;
+    max-width: 22ch;
+  }
+  .statement p .h{ color: var(--marigold) }
+  .statement p .r{ color: var(--chilli) }
+  .statement .sig{
+    margin-top: 2.2rem;
+    font-family:var(--han); font-size: clamp(1.5rem, 4vw, 2.4rem);
+    color: var(--marigold);
+  }
+
+  /* ── FOOTER ─────────────────────────────────────────────── */
+  .foot{
+    border-top: 1px solid rgba(242,226,195,.12);
+    padding: clamp(2rem, 4vw, 3.5rem) var(--pad-x);
+    background: var(--soy-2);
+  }
+  .foot-inner{
+    max-width: 1400px; margin: 0 auto;
+    display:grid; grid-template-columns:1fr; gap: 2rem;
+  }
+  @media (min-width: 760px){
+    .foot-inner{ grid-template-columns: 1.4fr 1fr 1fr; align-items:start }
+  }
+  .foot-letter{
+    font-family:var(--display);
+    font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+    line-height:1.4;
+    color: var(--cream);
+  }
+  .foot-letter .han{ font-family:var(--han); color: var(--marigold); display:block; margin-top:.4rem }
+  .foot-col h4{
+    font-family:var(--body); font-weight:600;
+    text-transform:uppercase; letter-spacing:.18em; font-size:.78rem;
+    color:var(--cream-dim); margin:0 0 .9rem;
+  }
+  .foot-col ul{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.55rem; }
+  .foot-col li, .foot-col a{ color: var(--cream); font-family:var(--display); font-size:1rem; letter-spacing:.005em }
+  .foot-col a:hover{ color: var(--marigold) }
+  .foot-bottom{
+    max-width:1400px; margin: 2.2rem auto 0;
+    padding-top:1.4rem;
+    border-top:1px dashed rgba(242,226,195,.15);
+    display:flex; justify-content:space-between; gap:1rem;
+    color:var(--cream-dim); font-size:.78rem; letter-spacing:.06em; text-transform:uppercase;
+    flex-wrap:wrap;
+  }
+
+  /* ── SKIP-LINK ──────────────────────────────────────────── */
+  .skip{ position:absolute; left:-9999px; }
+  .skip:focus{ left:1rem; top:1rem; padding:.5rem .8rem; background:var(--marigold); color:var(--soy); z-index:99 }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar" role="banner">
+  <a class="mark" href="#top" aria-label="Zhonghua Traditional Snacks home">
+    <span class="en">Zhonghua</span>
+    <span class="zh" aria-hidden="true">中华</span>
+  </a>
+  <nav class="topnav" aria-label="Primary">
+    <a href="#make">What we make</a>
+    <a href="#visit">Visit</a>
+    <a class="tel-pill" href="tel:+441223354573"><span class="dot"></span>01223&nbsp;354573</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="top">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">A Cambridge institution · Norfolk Street</div>
+        <h1 class="wordmark">Zhonghua<br><span class="amp">Traditional</span> Snacks</h1>
+        <p class="han-stack" aria-hidden="true">中华<span class="red">传统</span>小吃</p>
+        <p class="hero-meta">
+          A small kitchen on Norfolk Street making <em>dumplings, hand-pulled noodles and filled buns</em> the way they're meant to be — folded by hand, served quickly, eaten warm.
+        </p>
+      </div>
+
+      <aside class="hero-card" aria-label="Today">
+        <div class="status-line">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>Open six days a week</span>
+        </div>
+        <div class="card-row">
+          <div>
+            <div class="lbl">Hours</div>
+            <div class="val">12 – 9pm</div>
+          </div>
+          <div style="text-align:right">
+            <div class="lbl">Closed</div>
+            <div class="val closed-flag">Tuesday</div>
+          </div>
+        </div>
+        <div class="card-row">
+          <div>
+            <div class="lbl">Walk in</div>
+            <div class="val">13 Norfolk St</div>
+          </div>
+          <div style="text-align:right">
+            <div class="lbl">Call ahead</div>
+            <div class="val"><a href="tel:+441223354573">01223 354573</a></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      <span>Hand-folded dumplings</span>
+      <span class="zh">中华传统小吃</span>
+      <span>Hand-pulled noodles</span>
+      <span>Open today · 12 – 9pm</span>
+      <span>Closed Tuesdays</span>
+      <span>13 Norfolk Street · Cambridge</span>
+      <span>Hand-folded dumplings</span>
+      <span class="zh">中华传统小吃</span>
+      <span>Hand-pulled noodles</span>
+      <span>Open today · 12 – 9pm</span>
+      <span>Closed Tuesdays</span>
+      <span>13 Norfolk Street · Cambridge</span>
+    </div>
+  </div>
+
+  <section class="section" id="make" aria-labelledby="make-h">
+    <div class="section-head">
+      <div>
+        <div class="kicker">What we make</div>
+        <h2 id="make-h">A short menu, made properly.</h2>
+      </div>
+      <div class="han-tag" aria-hidden="true">小吃 · xiǎochī</div>
+    </div>
+
+    <div class="menu-board">
+      <div class="dishes">
+
+        <article class="dish reveal">
+          <div class="no">01</div>
+          <div>
+            <div class="head">
+              <span class="en-name">Dumplings</span>
+              <span class="zh-name" aria-hidden="true">饺子</span>
+            </div>
+            <p class="desc">Folded by hand at the counter and cooked to order — boiled until plump, or pan-fried until the bottoms crack golden. Served by the dozen, the way they ought to be.</p>
+          </div>
+        </article>
+
+        <article class="dish reveal">
+          <div class="no">02</div>
+          <div>
+            <div class="head">
+              <span class="en-name">Noodles</span>
+              <span class="zh-name" aria-hidden="true">面条</span>
+            </div>
+            <p class="desc">Cooked to order and served in clear broth or tossed dry with sauce — the kind of bowl that fills you for the afternoon. Chewy in the middle, soft at the ends.</p>
+          </div>
+        </article>
+
+        <article class="dish reveal">
+          <div class="no">03</div>
+          <div>
+            <div class="head">
+              <span class="en-name">Filled buns</span>
+              <span class="zh-name" aria-hidden="true">包子</span>
+            </div>
+            <p class="desc">Soft white dough wrapped around savoury fillings, steamed in stacked bamboo. Eat them with your hands while they're hot.</p>
+          </div>
+        </article>
+
+        <article class="dish reveal">
+          <div class="no">04</div>
+          <div>
+            <div class="head">
+              <span class="en-name">Traditional snacks</span>
+              <span class="zh-name" aria-hidden="true">小吃</span>
+            </div>
+            <p class="desc">A short rotation of the smaller dishes a snack shop is meant to do well — the kind you'd find at a stall in a Beijing back-lane or a Shanghai morning market. Ask at the counter.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="statement" aria-label="House philosophy">
+    <p>
+      A snack shop. <span class="h">Not</span> a restaurant. <span class="r">No</span> reservations, no tasting menu — just food made the same way it's been made for a long time.
+    </p>
+    <div class="sig" aria-hidden="true">— 中华小吃</div>
+  </section>
+
+  <section class="section" id="visit" aria-labelledby="visit-h">
+    <div class="section-head">
+      <div>
+        <div class="kicker">Find us</div>
+        <h2 id="visit-h">Norfolk Street, on the corner of town.</h2>
+      </div>
+      <div class="han-tag" aria-hidden="true">来吃饭 · come eat</div>
+    </div>
+
+    <div class="visit-grid">
+
+      <div class="visit-card">
+        <h3>Opening hours</h3>
+        <ul class="hours">
+          <li><span class="day">Monday</span><span class="time">12 – 9pm</span></li>
+          <li class="closed-row"><span class="day">Tuesday</span><span class="time">Closed</span></li>
+          <li><span class="day">Wednesday</span><span class="time">12 – 9pm</span></li>
+          <li><span class="day">Thursday</span><span class="time">12 – 9pm</span></li>
+          <li><span class="day">Friday</span><span class="time">12 – 9pm</span></li>
+          <li><span class="day">Saturday</span><span class="time">12 – 9pm</span></li>
+          <li><span class="day">Sunday</span><span class="time">12 – 9pm</span></li>
+        </ul>
+
+        <div class="fsa" role="note" aria-label="Food hygiene rating">
+          <span class="score" aria-hidden="true">★</span>
+          <div>
+            <strong>Food Standards Agency</strong> rated us <strong>Good</strong> across hygiene, facilities and food-safety management at our last inspection (4 July 2024).
+          </div>
+        </div>
+      </div>
+
+      <div class="visit-card">
+        <h3>Address &amp; contact</h3>
+        <p class="addr">
+          Zhonghua Traditional Snacks<br>
+          13 Norfolk Street<br>
+          <span class="post">Cambridge · CB1 2LD</span>
+        </p>
+
+        <ul class="contact-list">
+          <li><span class="k">Phone</span><a class="v" href="tel:+441223354573">01223 354573</a></li>
+          <li><span class="k">Walk-up</span><span class="v">Norfolk Street</span></li>
+          <li><span class="k">Nearest</span><span class="v">Petty Cury · 7 min walk</span></li>
+        </ul>
+
+        <p style="margin-top:1.4rem; color:var(--cream-dim); font-size:.92rem;">
+          Small kitchen. Best to call ahead for larger orders, or walk in and wait — the dumplings are worth it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot" role="contentinfo">
+  <div class="foot-inner">
+    <div class="foot-letter">
+      Zhonghua Traditional Snacks · 13 Norfolk Street · Cambridge CB1 2LD
+      <span class="han" aria-hidden="true">中华传统小吃 · 剑桥</span>
+    </div>
+    <div class="foot-col">
+      <h4>Visit</h4>
+      <ul>
+        <li>Open Wed – Mon</li>
+        <li>12 – 9pm</li>
+        <li>Closed Tuesdays</li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Get in touch</h4>
+      <ul>
+        <li><a href="tel:+441223354573">01223 354573</a></li>
+        <li><a href="https://www.facebook.com/pages/Zhonghua-Traditional-Snacks/136210103131268" rel="noopener" target="_blank">Facebook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© Zhonghua Traditional Snacks · Cambridge</span>
+    <span aria-hidden="true">小吃 · xiǎochī</span>
+  </div>
+</footer>
+
+</body>
+</html>
